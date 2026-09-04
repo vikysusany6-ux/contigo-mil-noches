@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contigo, mil noches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="cielo" id="cielo"></div>
+  <div class="luna">
+    <svg viewBox="0 0 100 100" width="100%" height="100%">
+      <path d="M50 5 A45 45 0 1 0 50 95 A35 35 0 1 1 50 5 Z" fill="#e8d9a0"/>
+    </svg>
+  </div>
+
+  <!-- PANTALLA 1: INTRO -->
+  <section id="intro" class="pantalla activa">
+    <p class="eyebrow">para ti</p>
+    <h1>Contigo, mil noches<br>y una más</h1>
+    <p class="subtitulo">Cada estrella que toques guarda una noche nuestra.<br>Encuéntralas todas.</p>
+    <button id="btn-empezar" class="boton">Buscar las estrellas</button>
+  </section>
+
+  <!-- PANTALLA 2: JUEGO -->
+  <section id="juego" class="pantalla">
+    <div class="contador"><span id="contador-num">0</span> / <span id="contador-total">6</span> noches encontradas</div>
+    <div id="campo-estrellas" class="campo-estrellas"></div>
+  </section>
+
+  <!-- PANTALLA 3: GALERÍA + CARTA -->
+  <section id="final" class="pantalla">
+    <p class="eyebrow">nuestras noches</p>
+    <h2>Esto encontraste</h2>
+    <div class="galeria" id="galeria"></div>
+
+    <div class="carta">
+      <p>Mi amor,</p>
+      <p>Desde que llegaste a mi vida, cada noche contigo se siente como un cuento que no quiero que termine. Cada día escribiendo la historia de nuestro amor</p>
+      </p>Me encantas y me fasinas se siente como un sueño realidad estar a tu lado</p>
+      <p>Te amo y te amare hasta el final de mis días solo quiero estar a tu lado solo pienso en el inmenso amor que te tengo</p>
+    </div>
+
+    <div class="reproductor">
+      <button id="btn-musica" class="boton boton-musica">▶ Escuchar nuestra canción</button>
+      <p class="credito">"Mil y una noches" — Maki</p>
+      <audio id="audio" src="assets/musica/cancion.mp3" loop></audio>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

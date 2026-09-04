@@ -1,0 +1,175 @@
+:root{
+  --noche-1: #0d0f2b;
+  --noche-2: #191c45;
+  --dorado: #d9b45c;
+  --dorado-suave: #e8d9a0;
+  --rosa: #a8465f;
+  --crema: #f4ecd8;
+}
+
+*{ box-sizing: border-box; }
+
+html,body{
+  margin:0; padding:0;
+  min-height:100vh;
+  background: radial-gradient(ellipse at 50% -10%, var(--noche-2), var(--noche-1) 60%);
+  color: var(--crema);
+  font-family: 'Poppins', sans-serif;
+  overflow-x:hidden;
+}
+
+.cielo{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 10% 20%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 30% 70%, #fff, transparent),
+    radial-gradient(1px 1px at 50% 40%, #fff, transparent),
+    radial-gradient(2px 2px at 70% 20%, var(--dorado-suave), transparent),
+    radial-gradient(1px 1px at 85% 60%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 15% 85%, #fff, transparent),
+    radial-gradient(1px 1px at 60% 90%, #fff, transparent),
+    radial-gradient(2px 2px at 90% 85%, var(--dorado-suave), transparent);
+  background-repeat: repeat;
+  background-size: 100% 100%;
+  animation: titilar 4s ease-in-out infinite alternate;
+}
+@keyframes titilar{ from{opacity:.5;} to{opacity:1;} }
+
+.luna{
+  position:fixed; top:6%; right:8%; width:70px; height:70px; z-index:0;
+  filter: drop-shadow(0 0 18px rgba(232,217,160,.55));
+}
+
+.pantalla{
+  position:relative; z-index:1;
+  min-height:100vh;
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: 8vh 6vw;
+}
+.pantalla.activa{ display:flex; }
+
+.eyebrow{
+  letter-spacing:.08em;
+  color: var(--dorado);
+  font-size: .85rem;
+  margin:0 0 .5rem 0;
+}
+
+h1, h2{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  line-height:1.15;
+  margin:0;
+}
+h1{ font-size: clamp(2.2rem, 7vw, 3.6rem); }
+h2{ font-size: clamp(1.8rem, 6vw, 2.6rem); margin-bottom:1.5rem; }
+
+.subtitulo{
+  max-width: 32ch;
+  color: #cfc9e8;
+  font-weight:300;
+  margin: 1.4rem 0 2.2rem 0;
+  line-height:1.6;
+}
+
+.boton{
+  background: linear-gradient(135deg, var(--dorado), #b8863a);
+  color: var(--noche-1);
+  border:none;
+  padding: .9rem 2rem;
+  border-radius: 999px;
+  font-family:'Poppins', sans-serif;
+  font-size: .95rem;
+  font-weight:500;
+  cursor:pointer;
+  box-shadow: 0 8px 24px rgba(217,180,92,.25);
+  transition: transform .2s ease;
+}
+.boton:hover{ transform: translateY(-2px); }
+.boton:active{ transform: translateY(0); }
+
+/* JUEGO */
+.contador{
+  color: var(--dorado);
+  letter-spacing:.05em;
+  margin-bottom: 3rem;
+  font-size:.9rem;
+}
+.campo-estrellas{
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 55vh;
+}
+.estrella{
+  position:absolute;
+  width: 42px; height:42px;
+  cursor:pointer;
+  background:none;
+  border:none;
+  color: var(--dorado-suave);
+  font-size: 2rem;
+  filter: drop-shadow(0 0 6px rgba(232,217,160,.6));
+  animation: flotar 3s ease-in-out infinite;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.estrella:hover{ transform: scale(1.15); }
+.estrella.encontrada{
+  opacity:0;
+  transform: scale(1.6);
+  pointer-events:none;
+}
+@keyframes flotar{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-10px); }
+}
+
+/* GALERIA */
+.galeria{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 460px;
+  width:100%;
+  margin-bottom: 2.5rem;
+}
+.galeria figure{
+  margin:0;
+  border-radius: 12px;
+  overflow:hidden;
+  border: 1px solid rgba(217,180,92,.3);
+  background: rgba(255,255,255,.03);
+}
+.galeria img{
+  width:100%; height:140px; object-fit:cover; display:block;
+}
+.galeria figcaption{
+  font-size:.75rem;
+  padding: .4rem .6rem;
+  color: var(--dorado-suave);
+}
+
+.carta{
+  max-width: 42ch;
+  text-align:left;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(217,180,92,.25);
+  border-radius: 16px;
+  padding: 1.6rem 1.8rem;
+  line-height:1.75;
+  font-weight:300;
+  margin-bottom: 2.2rem;
+}
+.carta p{ margin: 0 0 .9rem 0; }
+.carta p:last-child{ margin-bottom:0; color: var(--dorado); }
+
+.reproductor{ display:flex; flex-direction:column; align-items:center; gap:.5rem; }
+.credito{ font-size:.75rem; color:#a79fc9; letter-spacing:.03em; }
+
+@media (max-width: 380px){
+  .galeria{ grid-template-columns: 1fr 1fr; }
+}
